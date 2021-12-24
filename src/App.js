@@ -1,7 +1,6 @@
 import React, {useState ,useEffect} from "react";
 import PokemonCard from "./components/PokemonCard";
 import axios from "axios";
-import "./styles/search-bar.css";
 import "./styles/Header.css";
 import "./styles/pokemon-container.css";
 
