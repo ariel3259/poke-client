@@ -1,0 +1,21 @@
+.pokemon-container{
+    grid-column:3/9;
+    grid-row:3/9;
+    background:rgba(0,0,0,0.60);
+    border: 1px solid rgba(255,255,255,0.60);
+    display:flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    border-radius:8px;
+}
+
+@media screen and (max-width:414px) {
+    .pokemon-container{
+        grid-column: 1/11;
+        grid-row:2/11;
+        margin:50px;
+        flex-direction:column;
+        flex-wrap: nowrap;
+    }
+}

@@ -1,24 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import React, {useState ,useEffect} from "react";
+import PokemonCard from "./components/PokemonCard";
+import axios from "axios";
+import "./styles/search-bar.css";
+import "./styles/Header.css";
+import "./styles/pokemon-container.css";
 
 function App() {
+  const [pokemon, UsePokemon] = useState([{}]);
+  const FetchPokemons = async () => {
+    try{
+      const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1118");
+      UsePokemon(response.data.results);
+    }
+    catch(err){
+      console.log(err); 
+    }
+  }
+  useEffect( () => {
+  FetchPokemons();
+  },[]);
+  
+ 
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+  <>
+     <header>
+        <h1>Poke client</h1>  
+     </header>
+      <div className = "pokemon-container"> 
+        {pokemon ? pokemon.map((element, index) => <PokemonCard name = {element.name} key = {index} />) : undefined}
+      </div>
+  </>
   );
 }
 
