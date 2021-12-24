@@ -7,6 +7,7 @@ import "./styles/pokemon-container.css";
 
 function App() {
   const [pokemon, UsePokemon] = useState([{}]);
+ 
   const FetchPokemons = async () => {
     try{
       const response = await axios.get("https://pokeapi.co/api/v2/pokemon?limit=1118");
@@ -16,8 +17,9 @@ function App() {
       console.log(err); 
     }
   }
+ 
   useEffect( () => {
-  FetchPokemons();
+    FetchPokemons();
   },[]);
   
  
